@@ -22,4 +22,6 @@ const getVisibleExpenses = (expenses, {
   })
 }
 
+
+
 export default getVisibleExpenses;
