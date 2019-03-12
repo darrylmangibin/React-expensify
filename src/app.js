@@ -3,19 +3,15 @@ import ReactDOM  from 'react-dom';
 import { Provider } from 'react-redux';
 import AppRouter from './routers/AppRouter';
 import configureStore from './store/configureStore';
-import { addExpense } from './actions/expenses';
+import { startSetExpenses } from './actions/expenses';
 import { setTextFilter } from './actions/filters';
 import getVisibleExpenses from './selectors/expenses';
+import './firebase/firebase';
 
 import 'normalize.css/normalize.css';
 import'./styles/styles.scss';
 
 const store = configureStore();
-
-store.dispatch(addExpense({ description: 'water bill', amount: 9000000 }));
-store.dispatch(addExpense({ description: 'gas bill', amount: 4500 }));
-store.dispatch(addExpense({ description: 'rent', amount: 109500 }));
-
 
 const state = store.getState();
 const visibleExpenses = getVisibleExpenses(state.expenses, state.filters)
@@ -27,6 +23,8 @@ const jsx = (
   </Provider>
 )
 
-ReactDOM.render(
-  jsx, 
-  document.querySelector('#root'));
+ReactDOM.render(<p>Loading...</p>, document.querySelector('#root'))
+
+store.dispatch(startSetExpenses()).then(() => {
+  ReactDOM.render(jsx, document.querySelector('#root'));
+})
