@@ -5,4 +5,12 @@
   padding: $s-size;
   font-weight: 300;
   font-size: $font-size-large;
+  display: inline-block;
+  text-decoration: none;
+  line-height: 1;
+
+  &--link {
+    background: none;
+  }
 }
+
