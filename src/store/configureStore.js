@@ -4,7 +4,7 @@ import thunk from 'redux-thunk';
 import filtersReducers from '../reducers/filters';
 import authReducer from '../reducers/auth';
 
-const somposeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+const somposeEnhancers = compose
 
 // store creation
 export default () => {
